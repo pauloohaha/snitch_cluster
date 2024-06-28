@@ -11,6 +11,12 @@ TB_DIR   ?= $(SNITCH_ROOT)/target/common/test
 UTIL_DIR ?= $(SNITCH_ROOT)/util
 LOGS_DIR  = $(SIM_DIR)/logs
 
+# Bender
+INSTALL_PREFIX     ?= install
+INSTALL_DIR        ?= ${ROOT_DIR}/${INSTALL_PREFIX}
+BENDER_INSTALL_DIR ?= ${INSTALL_DIR}/bender
+BENDER_VERSION     := 0.27.3
+
 # Files
 BENDER_LOCK ?= $(ROOT)/Bender.lock
 

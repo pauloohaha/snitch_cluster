@@ -73,15 +73,7 @@
                     cacheline: 256 // word size in bits
                 },
                 cores: [
-                    { $ref: "#/compute_core_template" },
-                    { $ref: "#/compute_core_template" },
-                    { $ref: "#/compute_core_template" },
-                    { $ref: "#/compute_core_template" },
-                    { $ref: "#/compute_core_template" },
-                    { $ref: "#/compute_core_template" },
-                    { $ref: "#/compute_core_template" },
-                    { $ref: "#/compute_core_template" },
-                    { $ref: "#/dma_core_template" },
+                    { $ref: "#/dma_core_template" },//Piao: change to 1 control core and 1 DMA core
                 ]
             }
         ]
@@ -102,16 +94,16 @@
     },
     // Templates.
     compute_core_template: {
-        isa: "rv32imafd",
-        xssr: true,
-        xfrep: true,
+        isa: "rv32ima", // Piao: control core only ima, no fpu
+        xssr: false,
+        xfrep: false,
         xdma: false,
-        xf16: true,
-        xf16alt: true,
-        xf8: true,
-        xf8alt: true,
-        xfdotp: true,
-        xfvec: true,
+        xf16: false,
+        xf16alt: false,
+        xf8: false,
+        xf8alt: false,
+        xfdotp: false,
+        xfvec: false,
         ssr_nr_credits: 4,
         num_int_outstanding_loads: 1,
         num_int_outstanding_mem: 4,
@@ -130,7 +122,7 @@
         ],
     },
     dma_core_template: {
-        isa: "rv32imafd",
+        isa: "rv32ima",
         // Xdiv_sqrt: true,
         // isa: "rv32ema",
         xdma: true,
